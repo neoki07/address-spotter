@@ -30,6 +30,23 @@ const SearchIcon = () => (
   </svg>
 )
 
+const CloseIcon = () => (
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 14 14"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3 3l8 8M3 11l8-8"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+
 const NotificationBanner = () => {
   const [isHovered, setIsHovered] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
@@ -37,6 +54,10 @@ const NotificationBanner = () => {
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  const handleClose = () => {
+    setIsVisible(false)
+  }
 
   if (!isVisible) return null
 
@@ -53,6 +74,13 @@ const NotificationBanner = () => {
         <div className={styles.content}>
           <div className={styles.text}>Address detected on this page</div>
         </div>
+        <button
+          type="button"
+          className={styles.closeButton}
+          onClick={handleClose}
+          aria-label="Close notification">
+          <CloseIcon />
+        </button>
       </div>
     </div>
   )
