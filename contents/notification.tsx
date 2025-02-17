@@ -1,5 +1,6 @@
 import type { PlasmoCSConfig, PlasmoGetStyle } from "plasmo"
 import { useEffect, useState } from "react"
+import { scanForAddresses } from "~utils/page-scanner"
 import styleText from "data-text:./notification.module.css"
 import * as styles from "./notification.module.css"
 
@@ -52,14 +53,17 @@ const NotificationBanner = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    const addresses = scanForAddresses()
+    setIsVisible(addresses.length > 0)
   }, [])
+
+  if (!isVisible) {
+    return null
+  }
 
   const handleClose = () => {
     setIsVisible(false)
   }
-
-  if (!isVisible) return null
 
   return (
     <div
