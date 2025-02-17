@@ -72,13 +72,13 @@ const NotificationBanner = () => {
           <SearchIcon />
         </div>
         <div className={styles.content}>
-          <div className={styles.text}>Address detected on this page</div>
+          <div className={styles.text}>このページに住所が見つかりました。</div>
         </div>
         <button
           type="button"
           className={styles.closeButton}
           onClick={handleClose}
-          aria-label="Close notification">
+          aria-label="通知を閉じる">
           <CloseIcon />
         </button>
       </div>
